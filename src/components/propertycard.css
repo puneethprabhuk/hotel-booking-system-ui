@@ -1,0 +1,63 @@
+.property-card-container {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    height: fit-content;
+    width: 270px;
+}
+
+.property-card-image {
+    height: 60%;
+    /* background-color: blue; */
+}
+
+.property-card-image img {
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.property-card-details {
+    /* background-color: green; */
+    padding: .5rem;
+}
+
+.property-card-details .basic-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.property-card-details .basic-details h2 {
+    font-weight: 500;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.property-card-details .basic-details .ratings {
+    display: flex;
+    align-items: center;
+}
+
+.property-card-details .description {
+   color: gray;
+   margin-top: .2rem;
+   margin-bottom: .2rem;
+}
+
+
+.property-card-details .price-details {
+   font-weight: 600;
+   font-size: 16px;
+   display: flex;
+   align-items: center;
+}
+
+.property-card-details span {
+    color: gray;
+    font-weight: 400;
+    font-size: 14px;
+}
+

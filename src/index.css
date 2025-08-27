@@ -125,3 +125,22 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.property-list {
+  display: flex;
+  column-gap: 30px;
+  row-gap: 40px;
+  flex-wrap: wrap;
+}
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-error {
+  color: red;
+  font-size: 14px;
+}
