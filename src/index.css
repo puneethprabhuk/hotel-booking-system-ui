@@ -121,6 +121,7 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -145,5 +146,82 @@ body {
 
 .form-error {
   color: red;
+  font-size: 14px;
+}
+
+
+.search-box {
+  width: 800px;
+  border-radius: 40px;
+  border: 1px solid rgb(201, 201, 201);
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.search-box label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.search-input-container {
+  transition: all .1s ease-in-out;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+
+.search-location {
+  background-color: #fff;
+  width: 34%;
+
+}
+
+.search-input-container .search-input {
+  border: none;
+  outline: none;
+}
+
+.search-checkin {
+  background-color: #fff;
+  width: 18%;
+}
+
+.search-checkout {
+  background-color: #fff;
+  width: 18%;
+}
+
+.search-guest {
+  background-color: #fff;
+  width: 30%;
+  position: relative;
+}
+
+.search-location:hover,
+.search-checkin:hover,
+.search-checkout:hover,
+.search-guest:hover {
+  background-color: rgb(236, 234, 234);
+}
+
+
+.search-button {
+  border-radius: 50%;
+  position: absolute;
+  right: 8px;
+  bottom: 12px;
+}
+
+.logo {
+  height: 150px;
+  width: 150px;
+}
+
+.search-location-title {
+  color: gray;
   font-size: 14px;
 }
