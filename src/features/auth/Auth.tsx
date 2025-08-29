@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -10,33 +11,27 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from "react"
+import { toast } from "sonner"
+import type { AuthRequest, RegisterRequest } from "./auth.types"
+import { login, signup } from "./authService"
+import { useNavigate } from "react-router-dom"
 
-interface LoginDTO {
-    email: string;
-    password: string;
-}
-
-interface SignupDTO extends LoginDTO {
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    confirmPassword: string
-}
 
 export default function Auth({ mode }: { mode: 'login' | 'signup' }) {
+
+    const navigate = useNavigate();
 
     const [authMode, setAuthMode] = useState<'login' | 'signup'>(mode ?? 'login');
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
-    const [phoneNumber, setPhoneNumber] = useState<string>("");
+    const [contactNumber, setContactNumber] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [passwordMismatch, setPasswordMismatch] = useState<boolean>(false);
 
 
-    const handleAuthSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleAuthSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (authMode === 'signup') {
             if (password !== confirmPassword) {
@@ -45,23 +40,38 @@ export default function Auth({ mode }: { mode: 'login' | 'signup' }) {
             } else {
                 setPasswordMismatch(false);
             }
-            const authDTO: SignupDTO = {
+            const registerRequest: RegisterRequest = {
                 firstName,
                 lastName,
-                phoneNumber,
+                contactNumber,
                 email,
                 password,
                 confirmPassword
             }
-            console.log(authDTO);
+
+            try {
+                const res = await signup(registerRequest);
+                toast.success(res.message);
+                navigate('/');
+            } catch (error: any) {
+                toast.error(error.message);
+            }
 
 
         } else {
-            const authDTO: LoginDTO = {
-                email,
+            const authRequest: AuthRequest = {
+                identifier: email,
                 password
             }
-            console.log(authDTO);
+
+            try {
+                const res = await login(authRequest);
+                toast.success(res.message);
+                navigate('/');
+
+            } catch (error: any) {
+                toast.error(error.message);
+            }
         }
     }
 
@@ -104,13 +114,13 @@ export default function Auth({ mode }: { mode: 'login' | 'signup' }) {
                                 />
                             </div>}
                             {authMode === 'signup' && <div className="grid gap-2">
-                                <Label htmlFor="phoneNumber">Phone number</Label>
+                                <Label htmlFor="contactNumber">Contact number</Label>
                                 <Input
-                                    id="phoneNumber"
+                                    id="contactNumber"
                                     type="text"
-                                    placeholder="your phone number"
-                                    value={phoneNumber}
-                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    placeholder="your contact number"
+                                    value={contactNumber}
+                                    onChange={(e) => setContactNumber(e.target.value)}
                                     required
                                 />
                             </div>}

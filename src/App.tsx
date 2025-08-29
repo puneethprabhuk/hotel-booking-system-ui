@@ -1,10 +1,10 @@
 import React, { lazy, Suspense } from "react"
 import Header from "./components/Header"
-import PropertyCard from "./components/PropertyCard"
-import { createBrowserRouter, RouterProvider, Route, Outlet } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 const Home = lazy(() => import('./pages/Home'));
-const Auth = lazy(() => import('./pages/Auth'));
+const Auth = lazy(() => import('./features/auth/Auth'));
+const UserProfile = lazy(() => import('./pages/UserProfile'));
 
 function Layout() {
   return (
@@ -25,7 +25,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/auth', element: <Auth mode="login" /> }
+      { path: '/auth', element: <Auth mode="login" /> },
+      { path: '/profile', element: <UserProfile /> }
     ]
   }
 ])

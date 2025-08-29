@@ -217,11 +217,61 @@ body {
 }
 
 .logo {
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
 }
 
 .search-location-title {
   color: gray;
   font-size: 14px;
+}
+
+
+
+.guest-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guest-type:first-child {
+  margin-bottom: 1.5rem;
+}
+
+.guest-type:last-child {
+  margin-top: 1.5rem;
+}
+
+.guest-type .guest-type-name span {
+  color: gray;
+  font-size: 14px;
+}
+
+.guest-type .guest-type-name p {
+  font-weight: 500;
+}
+
+.guest-type-button {
+  display: flex;
+  align-items: center;
+}
+
+.guest-type-buttons span {
+  margin: 0 .8rem;
+}
+
+Button {
+  cursor: pointer;
+}
+
+.main-menu-item {
+  font-weight: 500;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.main-menu-item span {
+  margin-left: .8rem;
 }
